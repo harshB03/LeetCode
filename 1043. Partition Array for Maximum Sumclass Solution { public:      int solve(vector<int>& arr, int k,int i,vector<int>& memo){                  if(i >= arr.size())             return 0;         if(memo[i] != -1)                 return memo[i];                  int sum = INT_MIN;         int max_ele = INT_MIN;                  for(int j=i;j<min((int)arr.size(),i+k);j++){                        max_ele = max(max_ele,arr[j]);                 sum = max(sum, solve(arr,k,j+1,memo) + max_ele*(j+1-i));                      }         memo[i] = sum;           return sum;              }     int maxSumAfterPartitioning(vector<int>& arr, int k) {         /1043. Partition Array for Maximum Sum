@@ -1,0 +1,30 @@
+//1043. Partition Array for Maximum Sum
+//Date - 03/02/2024
+class Solution {
+public:
+     int solve(vector<int>& arr, int k,int i,vector<int>& memo){
+        
+        if(i >= arr.size())
+            return 0;
+        if(memo[i] != -1)    
+            return memo[i];
+        
+        int sum = INT_MIN;
+        int max_ele = INT_MIN;
+        
+        for(int j=i;j<min((int)arr.size(),i+k);j++){
+      
+                max_ele = max(max_ele,arr[j]);
+                sum = max(sum, solve(arr,k,j+1,memo) + max_ele*(j+1-i));
+            
+        }
+        memo[i] = sum;  
+        return sum;
+        
+    }
+    int maxSumAfterPartitioning(vector<int>& arr, int k) {
+        // int ans = 0;
+        vector<int> memo(arr.size()+1,-1);
+        return solve(arr,k,0,memo);
+    }
+};
