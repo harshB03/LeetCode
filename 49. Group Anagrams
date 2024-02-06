@@ -1,0 +1,21 @@
+//Date - 06/02/2024
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<vector<string>> ans;
+        unordered_map<string,vector<string>> umap;
+        for(auto& s:strs)
+        {
+            string t=s;
+            sort(t.begin(),t.end());
+            umap[t].push_back(s);
+        }
+        
+        for(auto& c:umap)
+        {
+            ans.push_back(c.second);
+        }
+        return ans;
+    }
+};
