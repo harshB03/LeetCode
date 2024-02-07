@@ -1,0 +1,29 @@
+///Date - 07/02/2024
+
+class Solution {
+public:
+
+    string frequencySort(string s) {
+        // vector<pair<int,int>> freq(26,0);
+        unordered_map<int,int> mp;
+        for(int i=0;i<s.length();i++)
+        {
+            mp[s[i]-'a']++;
+        }
+        vector<pair<int,int>> res;
+        for(auto it:mp)
+        {
+            res.push_back({it.second,it.first});
+        }
+        sort(res.begin(),res.end(),greater());
+        string ans = "";
+        for(int i=0;i<res.size();i++)
+        {
+            for(int j=0;j<res[i].first;j++)
+            {
+                ans+=(res[i].second+'a');
+            }
+        }
+        return ans;
+    }
+};
