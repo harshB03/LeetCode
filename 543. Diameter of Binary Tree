@@ -1,0 +1,23 @@
+//Date - 27/02/2024 
+
+class Solution {
+public:
+    // int ans = 0;
+    int solve(TreeNode* root,int& dist)
+    {
+        if(!root)
+        {
+            // ans = max(dist,ans);
+            return 0;
+        }
+        int lh = solve(root->left,dist);
+        int rh = solve(root->right,dist);
+        dist = max(dist,lh+rh);
+        return max(lh,rh)+1;
+    }
+    int diameterOfBinaryTree(TreeNode* root) {
+        int dis = 0;
+        solve(root,dis);
+        return dis;
+    }
+};
