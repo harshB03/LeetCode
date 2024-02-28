@@ -1,0 +1,24 @@
+//Date - 28/02/2024
+
+class Solution {
+public:
+    
+    int maxi = -1; 
+    void solve(TreeNode* root , int & ans , int lv)
+    {
+
+        if(!root) return ; 
+        if(maxi < lv){
+            maxi = lv; 
+            ans = root->val; 
+        }
+        
+        solve(root->left,ans , lv+1);
+        solve(root->right,ans ,lv+1);
+    }
+    int findBottomLeftValue(TreeNode* root) {
+        int ans; 
+        solve(root,ans , 0);
+        return ans; 
+    }
+};
