@@ -1,0 +1,21 @@
+//Date - 01/03/2024
+
+class Solution {
+public:
+    string maximumOddBinaryNumber(string s) {
+        string ans;
+        int n = s.length();
+        sort(s.begin(),s.end(),greater<int>());
+        if(s[n-1]=='1')
+            return s;
+        else
+        {
+            for(int i=n-1;i>=0;i--)
+            {
+                if(s[i]=='1')
+                    swap(s[i],s[n-1]);
+            }
+        }
+        return s;
+    }
+};
