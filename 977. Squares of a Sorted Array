@@ -1,0 +1,19 @@
+//Date - 02/03/2024
+
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> res(nums.size());
+        //int ans=0;
+        int begin=0,end=nums.size()-1;
+        for(int i=nums.size()-1;i>=0;i--)
+        {
+            if(abs(nums[begin])<abs(nums[end]))
+                res[i]=nums[end]*nums[end--];
+            else
+                res[i]=nums[begin]*nums[begin++];
+        }
+        //sort(res.begin(),res.end());
+        return res;
+    }
+};
