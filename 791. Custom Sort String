@@ -1,0 +1,29 @@
+//Date - 11/03/2024
+
+class Solution {
+public:
+    string customSortString(string order, string s) {
+        unordered_map<int,int> mp;
+        for(auto c:s)
+            mp[c-'a']++;
+        string ans;
+        for(int i=0;i<order.length();i++)
+        {
+            if(mp.find(order[i]-'a')!=mp.end())
+            {
+                int it = mp[order[i]-'a'];
+                for(int j=0;j<it;j++)
+                    ans+=(order[i]);
+                mp.erase(order[i]-'a');
+            }
+        }
+        for(auto it:mp)
+        {
+            for(int i=0;i<it.second;i++)
+            {
+                ans+=(it.first+'a');
+            }
+        }
+        return ans;
+    }
+};/
